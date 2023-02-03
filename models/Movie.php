@@ -1,4 +1,5 @@
 <?php
+include_once __DIR__ . '/Genre.php';
 
 
 class Movie
@@ -8,19 +9,22 @@ class Movie
     public $title;
     public $producer;
     public $releaseYear;
-    public $genre;
+    public $genres;
     public $posterPath;
     public $duration;
 
-    function __construct($_title, $_producer, $_releaseYear, $_genre, $_posterPath, $_duration)
+
+    function __construct($_title, $_producer, $_releaseYear, $_genres, $_posterPath, $_duration)
     {
         $this->title = $_title;
         $this->producer = $_producer;
         $this->releaseYear = $_releaseYear;
-        $this->genre = $_genre;
+        $this->genres = $_genres;
         $this->posterPath = $_posterPath;
         $this->duration = $_duration;
     }
+
+    // Funzioni per i dati inseriti
 
     public function getTitle()
     {
@@ -42,8 +46,15 @@ class Movie
         return $this->posterPath;
     }
 
-    public function getGenre()
+    //Mi restituisce tutti i generi tramite la funzione inserita nella cklasse Genre
+    public function getAllGenres()
     {
-        return $this->genre;
+        $genreName = "";
+
+        foreach ($this->genres as $genre) {
+            $genreName .= $genre->getGenre();
+        }
+
+        return $genreName;
     }
 }
