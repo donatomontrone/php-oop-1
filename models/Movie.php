@@ -52,7 +52,7 @@ class Movie
         $genreName = "";
 
         foreach ($this->genres as $genre) {
-            $genreName .= $genre->getGenre();
+            $genreName .= $genre->getGenre() . '  ';
         }
 
         return $genreName;
